@@ -10,3 +10,9 @@ from duet.config import Settings
 os.environ.setdefault("ANTHROPIC_API_KEY", "test-key-not-real")
 
 
+@pytest.fixture
+def settings():
+    """Default settings."""
+    return Settings()
+
+
