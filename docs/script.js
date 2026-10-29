@@ -37,3 +37,20 @@ function applyConfig() {
   }
 }
 
+// Copy buttons for the code samples
+function setupCopyButtons() {
+  document.querySelectorAll(".copy").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const source = document.getElementById(button.dataset.copy);
+      if (!source || !navigator.clipboard) {
+        return;
+      }
+      await navigator.clipboard.writeText(source.textContent);
+      button.textContent = "Copied";
+      window.setTimeout(() => {
+        button.textContent = "Copy";
+      }, 1600);
+    });
+  });
+}
+
