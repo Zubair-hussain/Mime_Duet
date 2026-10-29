@@ -61,3 +61,16 @@ def test_check_in_runs_the_tool_loop_and_prints_the_brief(monkeypatch, capsys):
     assert "Two things need you." in output
 
 
+def test_check_in_skips_blocks_that_are_neither_tool_calls_nor_text(monkeypatch, capsys):
+    other = SimpleNamespace(type="thinking")
+    fake = FakeClient(
+        response("tool_use", other, text_block("let me look"), tool_use_block("t1", "read_inbox")),
+        response("end_turn", other, text_block("All done.")),
+    )
+    monkeypatch.setattr(mini_duet, "client", fake)
+    mini_duet.check_in()
+    results = fake.calls[1]["messages"][-1]["content"]
+    assert [result["tool_use_id"] for result in results] == ["t1"]
+    assert "All done." in capsys.readouterr().out
+
+
