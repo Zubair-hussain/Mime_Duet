@@ -90,3 +90,10 @@ def test_a_broken_inbox_exits_with_code_2(tmp_path, capsys):
     assert "Config error" in capsys.readouterr().out
 
 
+def test_a_rejected_key_exits_with_code_1(tmp_path, monkeypatch, capsys):
+    monkeypatch.chdir(tmp_path)
+    client = RaisingClient(FakeAuthError())
+    assert main(["--once"], client_factory=lambda: client) == 1
+    assert "Authentication failed" in capsys.readouterr().out
+
+
