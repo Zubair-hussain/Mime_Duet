@@ -144,3 +144,8 @@ def test_the_demo_is_a_real_gif():
     assert (DOCS / "assets" / "demo.gif").read_bytes()[:4] == b"GIF8"
 
 
+@pytest.mark.parametrize("name", ["zh-mark.svg", "favicon.svg"])
+def test_the_logo_files_are_svg(name):
+    assert (DOCS / "assets" / name).read_text(encoding="utf-8").lstrip().startswith("<svg")
+
+
