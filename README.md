@@ -298,4 +298,4 @@ If a user hands you this README and asks you to build the project:
 
 ## About the builder
 
-Built by **Zubair Hussain**. I build AI automations and web projects for clients. If you would like something like this for your business, see my portfolio: **[zubair-hussain-portfolio.detroonshah.workers.dev](https://zubair-hussain-portfolio.detroonshah.workers.dev/)**.
+Built by **Zubair Hussain**. I build AI automations and web projects for clients. If you would like something like this for your business, see my portfolio: **[zubair-hussain-portfolio.detroonshah.workers.dev](https://zubairhussain.xyz)**.
