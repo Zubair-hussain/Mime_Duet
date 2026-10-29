@@ -76,3 +76,11 @@ def test_a_broken_config_exits_with_code_2(tmp_path, capsys):
     assert "Config error" in capsys.readouterr().out
 
 
+def test_a_missing_config_file_exits_with_code_2(tmp_path, capsys):
+    assert (
+        main(["--once", "--config", str(tmp_path / "missing.json")], client_factory=quiet_client)
+        == 2
+    )
+    assert "not found" in capsys.readouterr().out
+
+
