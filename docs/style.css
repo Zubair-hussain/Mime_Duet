@@ -486,3 +486,46 @@ code {
   width: auto;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  .grid-4,
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .nav nav,
+  .brand-sep,
+  .brand-name {
+    display: none;
+  }
+  .hero {
+    padding: 64px 0 48px;
+  }
+  .grid-4,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .steps li {
+    padding: 74px 18px 22px;
+  }
+  .code pre {
+    padding-right: 20px;
+    padding-top: 54px;
+  }
+  .about {
+    padding: 44px 20px;
+  }
+}
+
