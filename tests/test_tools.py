@@ -63,3 +63,15 @@ def test_a_declined_message_is_not_sent(inbox):
     assert sent == []
 
 
+def test_approval_receives_the_recipient_and_the_text(inbox):
+    seen = []
+    run_tool(
+        "send_message",
+        {"to": "Sara", "text": "Hi"},
+        inbox,
+        lambda to, text: seen.append((to, text)) or True,
+        out=lambda text: None,
+    )
+    assert seen == [("Sara", "Hi")]
+
+
