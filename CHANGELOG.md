@@ -50,3 +50,20 @@ First public release.
 - Custom files: `duet.config.json` for settings and `data/inbox.json` for the inbox.
 - Command line options: `--once`, `--config`, `--inbox` and `--version`, and `python -m duet`.
 
+## [0.1.0] - 2026-10-29
+
+### Added
+
+- `mini_duet.py`: the single-file proactive assistant shown in the video.
+
+### Security
+
+- The API key is read from an environment variable, and `.env` files are ignored by Git.
+
+[Unreleased]: https://github.com/Zubair-hussain/Mime_Duet/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/Zubair-hussain/Mime_Duet/compare/v0.5.0...v1.0.0
+[0.5.0]: https://github.com/Zubair-hussain/Mime_Duet/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/Zubair-hussain/Mime_Duet/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/Zubair-hussain/Mime_Duet/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/Zubair-hussain/Mime_Duet/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/Zubair-hussain/Mime_Duet/releases/tag/v0.1.0
