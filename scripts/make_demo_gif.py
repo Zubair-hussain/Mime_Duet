@@ -74,3 +74,28 @@ def draw_frame(lines, cursor=True):
     return image
 
 
+def build_frames():
+    """Turn the script into (image, duration) pairs: typing, pause, answer, result."""
+    frames = []
+    shown = []
+    typed = ""
+    for char in "> " + COMMAND:
+        typed += char
+        frames.append((draw_frame([(typed, PROMPT)]), 45))
+    frames.append((draw_frame([(typed, PROMPT)]), 500))
+    shown = [SCRIPT[0], SCRIPT[1]]
+    for line in SCRIPT[2:4]:
+        shown.append(line)
+        frames.append((draw_frame(shown), 450))
+    shown.append(SCRIPT[4])
+    frames.append((draw_frame(shown), 1100))
+    answered = shown[:-1] + [("Approve? (y/n) y", WARN)]
+    frames.append((draw_frame(answered, cursor=False), 600))
+    shown = answered
+    for line in SCRIPT[5:]:
+        shown = shown + [line]
+        frames.append((draw_frame(shown, cursor=False), 380))
+    frames.append((draw_frame(shown, cursor=False), 2600))
+    return frames
+
+
