@@ -75,3 +75,11 @@ function setupReveal() {
   items.forEach((item) => observer.observe(item));
 }
 
+// Keep the footer year current
+function setYear() {
+  const year = document.getElementById("year");
+  if (year) {
+    year.textContent = String(new Date().getFullYear());
+  }
+}
+
