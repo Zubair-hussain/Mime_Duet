@@ -37,3 +37,7 @@ def test_the_prompt_text_is_stable():
     assert prompts == ["Approve? (y/n) "]
 
 
+def test_it_uses_the_real_input_and_print_by_default(monkeypatch, capsys):
+    monkeypatch.setattr("builtins.input", lambda prompt: "y")
+    assert ask_approval("Sara", "Hi") is True
+    assert "Sara" in capsys.readouterr().out
