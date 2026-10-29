@@ -24,3 +24,13 @@ def test_build_request_uses_the_settings(settings):
     assert request["fallbacks"] == "default"
 
 
+def test_build_request_respects_custom_settings():
+    custom = Settings(model="other-model", effort="high", max_tokens=5, system="Be brief.")
+    request = build_request(custom, [{"role": "user", "content": "hi"}])
+    assert request["model"] == "other-model"
+    assert request["output_config"] == {"effort": "high"}
+    assert request["max_tokens"] == 5
+    assert request["system"] == "Be brief."
+    assert request["messages"] == [{"role": "user", "content": "hi"}]
+
+
