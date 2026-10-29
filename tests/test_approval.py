@@ -11,3 +11,8 @@ def test_draft_shows_the_recipient_and_the_text():
     assert "Hi there" in draft
 
 
+@pytest.mark.parametrize("answer", ["y", "Y", " y ", "\ty\n"])
+def test_y_approves(answer):
+    assert ask_approval("Sara", "Hi", input_fn=lambda prompt: answer, out=lambda text: None) is True
+
+
