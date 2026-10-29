@@ -44,3 +44,9 @@ def test_deploy_has_the_permissions_pages_needs():
     assert permissions["id-token"] == "write"
 
 
+def test_deploy_publishes_the_docs_folder():
+    steps = load("deploy.yml")["jobs"]["deploy"]["steps"]
+    upload = next(step for step in steps if "upload-pages-artifact" in step.get("uses", ""))
+    assert upload["with"]["path"] == "docs"
+
+
