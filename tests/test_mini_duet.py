@@ -22,3 +22,9 @@ def test_read_inbox_returns_the_demo_inbox():
     assert json.loads(mini_duet.run_tool("read_inbox", {})) == mini_duet.INBOX
 
 
+def test_a_message_is_sent_only_after_approval(monkeypatch, capsys):
+    monkeypatch.setattr("builtins.input", lambda prompt: "y")
+    assert mini_duet.run_tool("send_message", {"to": "Sara", "text": "Hi"}) == "Sent."
+    assert "Sara" in capsys.readouterr().out
+
+
