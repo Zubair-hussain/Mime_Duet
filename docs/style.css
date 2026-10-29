@@ -273,3 +273,25 @@ h3 {
   font-size: 18px;
 }
 
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  padding: 28px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
