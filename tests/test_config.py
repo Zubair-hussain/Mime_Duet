@@ -56,3 +56,18 @@ def test_unknown_setting_raises(tmp_path):
         load_settings(file)
 
 
+@pytest.mark.parametrize(
+    "name,value",
+    [
+        ("check_every_seconds", 0),
+        ("check_every_seconds", -5),
+        ("max_tokens", 0),
+        ("check_every_seconds", "soon"),
+        ("check_every_seconds", True),
+    ],
+)
+def test_bad_numbers_are_rejected(name, value):
+    with pytest.raises(ValueError, match="positive whole number"):
+        validate(Settings(**{name: value}))
+
+
