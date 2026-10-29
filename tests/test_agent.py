@@ -54,3 +54,13 @@ def test_tool_results_match_their_tool_use_ids(inbox):
     assert results[1]["content"] == "Unknown tool: nope"
 
 
+def test_a_check_in_without_tools_returns_the_brief(settings, inbox):
+    client = FakeClient(response("end_turn", text_block("All quiet.")))
+    printed = []
+    brief = check_in(client, settings, inbox, always(True), printed.append)
+    assert brief == "All quiet."
+    assert len(client.calls) == 1
+    assert client.calls[0]["messages"][0] == {"role": "user", "content": CHECK_IN_PROMPT}
+    assert "All quiet." in printed[-1]
+
+
