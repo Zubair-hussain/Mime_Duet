@@ -31,3 +31,18 @@ def extract_text(response) -> str:
     return "\n".join(block.text for block in response.content if block.type == "text")
 
 
+def run_tool_calls(
+    response,
+    inbox: list[dict],
+    approve: Callable[[str, str], bool],
+    out: Callable[[str], None] = print,
+) -> list[dict]:
+    """Run every tool_use block and return matching tool_result blocks."""
+    results = []
+    for block in response.content:
+        if block.type == "tool_use":
+            result = run_tool(block.name, block.input, inbox, approve, out=out)
+            results.append({"type": "tool_result", "tool_use_id": block.id, "content": result})
+    return results
+
+
