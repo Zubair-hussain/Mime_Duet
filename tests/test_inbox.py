@@ -14,3 +14,7 @@ def test_no_path_returns_a_copy_of_the_demo_inbox():
     assert inbox is not DEFAULT_INBOX
 
 
+def test_missing_file_returns_the_demo_inbox(tmp_path):
+    assert load_inbox(tmp_path / "none.json") == DEFAULT_INBOX
+
+
