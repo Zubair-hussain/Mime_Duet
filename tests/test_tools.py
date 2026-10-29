@@ -23,3 +23,8 @@ def test_send_message_requires_to_and_text():
     assert set(schema["properties"]) == {"to", "text"}
 
 
+def test_read_inbox_returns_the_inbox_as_json(inbox):
+    result = run_tool("read_inbox", {}, inbox, always(True))
+    assert json.loads(result) == inbox
+
+
