@@ -28,3 +28,18 @@ class Settings:
     system: str = DEFAULT_SYSTEM
 
 
+def validate(settings: Settings) -> Settings:
+    """Raise ValueError if a setting is unusable, otherwise return it unchanged."""
+    for name in ("model", "effort", "inbox_path", "system"):
+        value = getattr(settings, name)
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"{name} must be a non-empty string")
+    for name in ("check_every_seconds", "max_tokens"):
+        value = getattr(settings, name)
+        if not isinstance(value, int) or isinstance(value, bool) or value <= 0:
+            raise ValueError(f"{name} must be a positive whole number")
+    if settings.effort not in EFFORT_LEVELS:
+        raise ValueError(f"effort must be one of: {', '.join(EFFORT_LEVELS)}")
+    return settings
+
+
