@@ -26,3 +26,8 @@ def build_request(settings: Settings, messages: list[dict]) -> dict:
     }
 
 
+def extract_text(response) -> str:
+    """Join the text blocks of a response."""
+    return "\n".join(block.text for block in response.content if block.type == "text")
+
+
