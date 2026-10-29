@@ -34,3 +34,10 @@ def test_build_request_respects_custom_settings():
     assert request["messages"] == [{"role": "user", "content": "hi"}]
 
 
+def test_extract_text_joins_text_blocks_only():
+    reply = response(
+        "end_turn", text_block("a"), tool_use_block("t", "read_inbox"), text_block("b")
+    )
+    assert extract_text(reply) == "a\nb"
+
+
