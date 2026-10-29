@@ -31,3 +31,10 @@ It will create the files, set up the virtual environment and install the package
 
 **The one step you must do yourself is getting your API key** (Step 1). No AI can do that for you.
 
+## What you need
+
+- A computer or laptop (Windows, macOS or Linux)
+- [Python 3.10 or newer](https://www.python.org/downloads/)
+- [Visual Studio Code](https://code.visualstudio.com/) with the **Python** extension
+- An Anthropic Console account and an API key
+
