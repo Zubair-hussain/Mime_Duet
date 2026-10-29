@@ -38,3 +38,11 @@ def test_an_unknown_tool_is_reported():
     assert mini_duet.run_tool("nope", {}) == "Unknown tool: nope"
 
 
+@pytest.mark.parametrize(
+    "answer,expected", [("y", True), ("Y", True), (" y ", True), ("n", False), ("", False)]
+)
+def test_ask_approval_only_accepts_y(monkeypatch, answer, expected):
+    monkeypatch.setattr("builtins.input", lambda prompt: answer)
+    assert mini_duet.ask_approval("Sara", "Hi") is expected
+
+
