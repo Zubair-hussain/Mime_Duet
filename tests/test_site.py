@@ -126,3 +126,10 @@ def test_every_config_reference_in_the_html_exists_in_config(page, config_js):
         assert re.search(rf"\b{reference}\s*:", config_js), reference
 
 
+def test_the_portfolio_link_is_set(config_js):
+    match = re.search(r'portfolioUrl:\s*"([^"]+)"', config_js)
+    assert match
+    assert match.group(1).startswith("https://")
+    assert "YOUR-" not in match.group(1)
+
+
