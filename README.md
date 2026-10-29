@@ -180,3 +180,16 @@ Mime_Duet/
 └── .github/              CI, deploy workflow, issue and PR templates
 ```
 
+## How it works
+
+| Part | What it does |
+|---|---|
+| `SYSTEM` | Claude's job description: who it is and how to behave |
+| `INBOX` | A pretend inbox for the demo. Swap it for a real email API later |
+| `tools` | Actions Claude may **ask** for: `read_inbox` and `send_message` |
+| `ask_approval()` | Human in the loop: nothing is sent until you type `y` |
+| `run_tool()` | Runs the tool Claude asked for and returns the result |
+| `check_in()` | The **agent loop**: ask Claude, run its tool calls, send back the results, repeat until it is done |
+
+The model is `claude-opus-5-5` with `effort: "medium"`. `fallbacks="default"` is a safety net: if a request is ever declined, the API can retry it on a backup model.
+
