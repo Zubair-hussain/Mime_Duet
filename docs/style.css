@@ -225,3 +225,27 @@ h1 {
   color: transparent;
 }
 
+.lead {
+  margin: 0 auto 36px;
+  max-width: 650px;
+  color: var(--muted);
+  font-size: 20px;
+}
+
+.lead strong {
+  color: var(--ink);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.fine {
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
