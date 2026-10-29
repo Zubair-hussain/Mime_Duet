@@ -11,3 +11,9 @@ Mini Duet checks an inbox on a schedule, writes you a short brief of what needs 
 
 > **Note:** This is **not** Anthropic's official Claude Duet app. Claude Duet is Anthropic's own product and it has no public API. Mini Duet is a small do-it-yourself version that talks to Claude through the [Anthropic API](https://docs.claude.com).
 
+## Demo
+
+![Mini Duet demo: it drafts a reply, asks for approval, and prints a brief](docs/assets/demo.gif)
+
+*A sample run with the demo inbox. This GIF is an illustration, drawn by `scripts/make_demo_gif.py`.*
+
