@@ -26,3 +26,12 @@ First public release.
 - A deploy workflow that publishes the `docs/` folder to GitHub Pages from `live/production`.
 - Tests that check both workflow files.
 
+## [0.4.0] - 2026-10-29
+
+### Added
+
+- A one-page portfolio-style website in `docs/` with a red gradient accent and the ZH. logo.
+- `docs/config.js`, one file for the name and the links. Links that are not set yet stay hidden.
+- A demo GIF drawn by `scripts/make_demo_gif.py`.
+- Tests that check the page: sections, links, images, and the local files it uses.
+
