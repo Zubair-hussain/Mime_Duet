@@ -32,3 +32,6 @@ class FakeClient:
         return self._responses.pop(0)
 
 
+def always(answer):
+    """An approve() stand-in that always answers yes or always answers no."""
+    return lambda to, text: answer
