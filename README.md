@@ -21,3 +21,13 @@ Mini Duet checks an inbox on a schedule, writes you a short brief of what needs 
 
 A one-page site for this project lives in [`docs/`](docs/) and deploys to GitHub Pages. See [Deploy the website](#deploy-the-website) for the steps. Once Pages is on, it is live at **https://zubair-hussain.github.io/Mime_Duet/**.
 
+## The fastest way: let an AI build it for you
+
+You do not have to write any code. Give this README to **Claude** or **Codex** and say:
+
+> "Build this project for me on my computer, following the README step by step."
+
+It will create the files, set up the virtual environment and install the packages.
+
+**The one step you must do yourself is getting your API key** (Step 1). No AI can do that for you.
+
