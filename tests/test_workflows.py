@@ -59,3 +59,9 @@ def test_ci_tests_on_several_python_versions():
     assert len(matrix) >= 3
 
 
+def test_ci_runs_the_tests_with_coverage():
+    text = steps_text(load("ci.yml"))
+    assert "pytest" in text
+    assert "--cov" in text
+
+
