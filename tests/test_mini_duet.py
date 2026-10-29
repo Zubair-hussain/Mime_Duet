@@ -46,3 +46,18 @@ def test_ask_approval_only_accepts_y(monkeypatch, answer, expected):
     assert mini_duet.ask_approval("Sara", "Hi") is expected
 
 
+def test_check_in_runs_the_tool_loop_and_prints_the_brief(monkeypatch, capsys):
+    fake = FakeClient(
+        response("tool_use", tool_use_block("t1", "read_inbox")),
+        response("end_turn", text_block("Two things need you.")),
+    )
+    monkeypatch.setattr(mini_duet, "client", fake)
+    mini_duet.check_in()
+    assert fake.calls[0]["model"] == "claude-opus-5-5"
+    assert fake.calls[0]["fallbacks"] == "default"
+    assert fake.calls[1]["messages"][-1]["content"][0]["tool_use_id"] == "t1"
+    output = capsys.readouterr().out
+    assert "--- Your brief ---" in output
+    assert "Two things need you." in output
+
+
