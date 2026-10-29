@@ -41,3 +41,11 @@ class FakeAuthError(anthropic.AuthenticationError):
         Exception.__init__(self, "invalid x-api-key")
 
 
+def test_once_runs_a_single_check_in(tmp_path, monkeypatch, capsys):
+    monkeypatch.chdir(tmp_path)
+    client = quiet_client()
+    assert main(["--once"], client_factory=lambda: client) == 0
+    assert len(client.calls) == 1
+    assert "All quiet." in capsys.readouterr().out
+
+
