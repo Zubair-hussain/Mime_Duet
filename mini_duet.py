@@ -61,3 +61,41 @@ def run_tool(name, args):
     return f"Unknown tool: {name}"
 
 
+def check_in():
+    messages = [{"role": "user", "content": "Time for a check-in. What needs my attention?"}]
+    while True:  # the agent loop
+        response = client.beta.messages.create(
+            model=MODEL,
+            max_tokens=16000,
+            system=SYSTEM,
+            tools=tools,
+            messages=messages,
+            output_config={"effort": "medium"},
+            betas=["server-side-fallback-2026-07-01"],
+            fallbacks="default",  # safety net if a request is declined
+        )
+        if response.stop_reason != "tool_use":
+            break
+        messages.append({"role": "assistant", "content": response.content})
+        results = []
+        for block in response.content:
+            if block.type == "tool_use":
+                results.append({
+                    "type": "tool_result",
+                    "tool_use_id": block.id,
+                    "content": run_tool(block.name, block.input),
+                })
+        messages.append({"role": "user", "content": results})
+
+    if response.stop_reason == "refusal":
+        print("Mini Duet declined this check-in.")
+        return
+    for block in response.content:
+        if block.type == "text":
+            print("\n--- Your brief ---\n" + block.text)
+
+
+if __name__ == "__main__":
+    while True:
+        check_in()
+        time.sleep(CHECK_EVERY_SECONDS)
