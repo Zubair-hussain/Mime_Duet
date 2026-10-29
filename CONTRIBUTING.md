@@ -16,3 +16,15 @@ pip install -r requirements-dev.txt
 
 You do **not** need an API key to run the tests.
 
+## Run the checks
+
+```bash
+ruff check .
+```
+
+```bash
+python -m pytest --cov
+```
+
+Both must pass before you open a pull request. Coverage must stay at or above 95%.
+
