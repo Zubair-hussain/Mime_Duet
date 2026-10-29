@@ -21,3 +21,16 @@ def write_json(path, data):
     return path
 
 
+class RaisingClient:
+    """A client whose requests fail with whatever error we give it."""
+
+    def __init__(self, error):
+        self.beta = type(
+            "Beta", (), {"messages": type("Messages", (), {"create": self._create})()}
+        )()
+        self._error = error
+
+    def _create(self, **kwargs):
+        raise self._error
+
+
