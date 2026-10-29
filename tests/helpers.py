@@ -14,3 +14,8 @@ def tool_use_block(block_id, name, tool_input=None):
     return SimpleNamespace(type="tool_use", id=block_id, name=name, input=tool_input or {})
 
 
+def response(stop_reason, *blocks):
+    """A whole response with a stop reason and content blocks."""
+    return SimpleNamespace(stop_reason=stop_reason, content=list(blocks))
+
+
