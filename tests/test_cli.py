@@ -118,3 +118,21 @@ def test_ctrl_c_stops_politely(tmp_path, monkeypatch, capsys):
     assert "Stopped." in capsys.readouterr().out
 
 
+def test_without_once_it_checks_in_on_a_schedule(tmp_path):
+    config = write_json(tmp_path / "config.json", {"check_every_seconds": 1})
+    client = FakeClient(
+        response("end_turn", text_block("one")),
+        response("end_turn", text_block("two")),
+    )
+    sleeps = []
+
+    def sleeper(seconds):
+        sleeps.append(seconds)
+        if len(sleeps) == 2:
+            raise KeyboardInterrupt
+
+    assert main(["--config", str(config)], client_factory=lambda: client, sleep=sleeper) == 0
+    assert len(client.calls) == 2
+    assert sleeps == [1, 1]
+
+
