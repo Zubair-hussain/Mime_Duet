@@ -51,3 +51,26 @@ def load_font(size):
     return ImageFont.load_default()
 
 
+def draw_frame(lines, cursor=True):
+    """One frame: a white page with a dark terminal window in the middle."""
+    image = Image.new("RGB", (W, H), BG)
+    draw = ImageDraw.Draw(image)
+    draw.rounded_rectangle([40, 30, W - 40, H - 30], radius=18, fill=WINDOW)
+    draw.rounded_rectangle([40, 30, W - 40, 80], radius=18, fill=BAR)
+    draw.rectangle([40, 60, W - 40, 80], fill=BAR)
+    for index, colour in enumerate(((248, 113, 113), (251, 191, 36), (74, 222, 128))):
+        x = 68 + index * 28
+        draw.ellipse([x, 47, x + 14, 61], fill=colour)
+    draw.text((W / 2, 55), "mini-duet  -  demo", font=load_font(18), fill=DIM, anchor="mm")
+    font = load_font(23)
+    y = 105
+    for text, colour in lines:
+        draw.text((72, y), text, font=font, fill=colour)
+        y += 36
+    if cursor and lines:
+        last_text = lines[-1][0]
+        x = 72 + font.getlength(last_text)
+        draw.rectangle([x + 2, y - 36 + 4, x + 14, y - 36 + 30], fill=TEXT)
+    return image
+
+
