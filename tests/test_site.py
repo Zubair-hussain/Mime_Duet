@@ -104,3 +104,10 @@ def test_every_local_file_the_page_uses_exists(page):
     assert missing == []
 
 
+def test_every_image_has_alt_text_and_a_size(page):
+    assert page.images
+    for image in page.images:
+        assert image.get("alt"), image
+        assert image.get("width") and image.get("height"), image
+
+
