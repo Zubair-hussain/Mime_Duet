@@ -149,3 +149,7 @@ def test_the_logo_files_are_svg(name):
     assert (DOCS / "assets" / name).read_text(encoding="utf-8").lstrip().startswith("<svg")
 
 
+@pytest.mark.parametrize("name", ["style.css", "script.js"])
+def test_braces_are_balanced(name):
+    text = (DOCS / name).read_text(encoding="utf-8")
+    assert text.count("{") == text.count("}")
