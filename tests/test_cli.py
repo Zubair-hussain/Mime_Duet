@@ -16,3 +16,8 @@ def quiet_client():
     return FakeClient(response("end_turn", text_block("All quiet.")))
 
 
+def write_json(path, data):
+    path.write_text(json.dumps(data), encoding="utf-8")
+    return path
+
+
