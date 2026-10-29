@@ -140,3 +140,7 @@ def test_the_github_link_points_at_the_repo(config_js):
     assert "YOUR-" not in match.group(1)
 
 
+def test_the_demo_is_a_real_gif():
+    assert (DOCS / "assets" / "demo.gif").read_bytes()[:4] == b"GIF8"
+
+
