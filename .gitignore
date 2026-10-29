@@ -1,0 +1,23 @@
+# secrets
+.env
+.env.*
+
+# virtual environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# test and coverage output
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# editors / OS
+.vscode/
+.DS_Store
+Thumbs.db
