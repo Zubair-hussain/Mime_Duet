@@ -221,3 +221,16 @@ ruff check .
 
 Coverage is checked on every push, and the build fails if it drops below 95%. The tests also check that the website is complete, that every link and image on it exists, and that the workflow files are valid.
 
+## Deploy the website
+
+The page in `docs/` is plain HTML, CSS and JavaScript, so GitHub Pages can host it for free.
+
+1. Push this folder to your GitHub repository (this project lives at `Zubair-hussain/Mime_Duet`).
+2. In the repository, open **Settings > Pages**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+4. Push to `live/production`, or open **Actions > Deploy site > Run workflow**. The workflow in `.github/workflows/deploy.yml` publishes `docs/`.
+5. After about a minute your site is live at `https://zubair-hussain.github.io/Mime_Duet/`.
+6. Optional: add your own domain under **Settings > Pages > Custom domain**.
+
+The production branch is `live/production`. GitHub only lets Pages deploy from branches its `github-pages` environment allows, so either make `live/production` the default branch (**Settings > Branches**) or add it under **Settings > Environments > github-pages > Deployment branches and tags**. Every deployment also appears under **Deployments** on the repository's home page.
+
