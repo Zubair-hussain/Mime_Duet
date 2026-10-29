@@ -83,3 +83,21 @@ Install the packages:
 pip install -r requirements.txt
 ```
 
+## Step 3: Set your API key
+
+Store the key in an **environment variable**, so it never ends up in your code or on GitHub.
+
+Windows (PowerShell):
+
+```powershell
+$env:ANTHROPIC_API_KEY = "your-key-here"
+```
+
+macOS / Linux:
+
+```bash
+export ANTHROPIC_API_KEY="your-key-here"
+```
+
+This lasts for the current terminal only. Set it again if you open a new one.
+
