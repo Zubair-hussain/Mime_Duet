@@ -116,3 +116,8 @@ def test_no_third_party_scripts_are_loaded(page):
     assert all(not source.startswith(("http://", "https://")) for source in page.scripts)
 
 
+def test_config_defines_every_key_the_page_needs(config_js):
+    for key in CONFIG_KEYS:
+        assert re.search(rf"\b{key}\s*:", config_js), key
+
+
