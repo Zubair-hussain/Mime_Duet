@@ -296,3 +296,6 @@ If a user hands you this README and asks you to build the project:
 3. **Do not ask for, create, or store an API key.** Tell the user to create one in the Anthropic Console (Step 1) and set `ANTHROPIC_API_KEY` themselves (Step 3).
 4. Tell the user how to run it: `python -m duet --once`.
 
+## About the builder
+
+Built by **Zubair Hussain**. I build AI automations and web projects for clients. If you would like something like this for your business, see my portfolio: **[zubair-hussain-portfolio.detroonshah.workers.dev](https://zubair-hussain-portfolio.detroonshah.workers.dev/)**.
