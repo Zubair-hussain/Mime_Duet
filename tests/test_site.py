@@ -75,3 +75,9 @@ def config_js():
     return (DOCS / "config.js").read_text(encoding="utf-8")
 
 
+def test_the_page_has_a_language_title_and_description(page):
+    assert page.lang == "en"
+    assert 10 < len(page.title.strip()) <= 70
+    assert 50 <= len(page.meta["description"]) <= 300
+
+
