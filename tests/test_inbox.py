@@ -42,3 +42,8 @@ def test_rejects_messages_that_are_not_objects():
         validate_inbox(["hello"])
 
 
+def test_rejects_messages_with_missing_keys():
+    with pytest.raises(ValueError, match="missing: subject, body"):
+        validate_inbox([{"from": "A"}])
+
+
