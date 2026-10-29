@@ -71,3 +71,8 @@ def test_bad_numbers_are_rejected(name, value):
         validate(Settings(**{name: value}))
 
 
+def test_bad_effort_is_rejected():
+    with pytest.raises(ValueError, match="effort must be one of"):
+        validate(Settings(effort="extreme"))
+
+
