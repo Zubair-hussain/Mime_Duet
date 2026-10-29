@@ -270,3 +270,7 @@ Check out any version with `git checkout v0.2.0`.
 | `RateLimitError` | Too many requests. Wait a moment and try again. |
 | `Config error: ...` | Check `duet.config.json` and `data/inbox.json`. The message says what is wrong. |
 
+## Cost
+
+Claude Opus 5.5 costs **$4 per million input tokens** and **$20 per million output tokens**. A token is about three quarters of a word. A small check-in like this one usually costs a few cents. Set a spending limit in the Console to stay safe.
+
