@@ -143,3 +143,8 @@ def test_version_flag(capsys):
     assert __version__ in capsys.readouterr().out
 
 
+def test_python_dash_m_duet_runs_main(monkeypatch, capsys):
+    monkeypatch.setattr(sys, "argv", ["duet", "--version"])
+    with pytest.raises(SystemExit):
+        runpy.run_module("duet", run_name="__main__")
+    assert __version__ in capsys.readouterr().out
