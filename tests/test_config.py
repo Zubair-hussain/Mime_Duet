@@ -76,3 +76,9 @@ def test_bad_effort_is_rejected():
         validate(Settings(effort="extreme"))
 
 
+@pytest.mark.parametrize("name", ["model", "effort", "inbox_path", "system"])
+def test_empty_text_settings_are_rejected(name):
+    with pytest.raises(ValueError, match="non-empty string"):
+        validate(Settings(**{name: "  "}))
+
+
