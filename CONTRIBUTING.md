@@ -35,3 +35,9 @@ Both must pass before you open a pull request. Coverage must stay at or above 95
 - `tests/` mirrors the package: `duet/agent.py` is tested in `tests/test_agent.py`.
 - `docs/` is the static website. `docs/config.js` holds the personal details.
 
+## Pull requests
+
+- Keep each pull request to one change.
+- Add or update tests for the change. Use the fake client in `tests/helpers.py`, never the real API.
+- Describe what changed and why in the pull request.
+
