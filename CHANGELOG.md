@@ -42,3 +42,11 @@ First public release.
 - A pytest suite with a fake API client, so tests need no key and no network.
 - A coverage gate at 95%, and `ruff` linting.
 
+## [0.2.0] - 2026-10-29
+
+### Added
+
+- The `duet` package: the same logic as the single file, split into config, inbox, approval, tools, agent, scheduler and command line modules.
+- Custom files: `duet.config.json` for settings and `data/inbox.json` for the inbox.
+- Command line options: `--once`, `--config`, `--inbox` and `--version`, and `python -m duet`.
+
