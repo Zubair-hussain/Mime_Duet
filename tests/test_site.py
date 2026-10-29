@@ -81,3 +81,7 @@ def test_the_page_has_a_language_title_and_description(page):
     assert 50 <= len(page.meta["description"]) <= 300
 
 
+def test_the_page_is_mobile_friendly(page):
+    assert "width=device-width" in page.meta["viewport"]
+
+
