@@ -65,3 +65,7 @@ def test_ci_runs_the_tests_with_coverage():
     assert "--cov" in text
 
 
+def test_ci_lints_with_ruff():
+    assert "ruff check" in steps_text(load("ci.yml"))
+
+
