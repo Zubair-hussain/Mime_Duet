@@ -16,3 +16,15 @@ DEFAULT_SYSTEM = (
 )
 
 
+@dataclass(frozen=True)
+class Settings:
+    """Everything you can change without touching the code."""
+
+    model: str = MODEL
+    effort: str = "medium"
+    max_tokens: int = 16000
+    check_every_seconds: int = 3 * 60 * 60
+    inbox_path: str = "data/inbox.json"
+    system: str = DEFAULT_SYSTEM
+
+
