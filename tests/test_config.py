@@ -82,3 +82,8 @@ def test_empty_text_settings_are_rejected(name):
         validate(Settings(**{name: "  "}))
 
 
+def test_valid_settings_pass_through_unchanged():
+    settings = Settings()
+    assert validate(settings) is settings
+
+
