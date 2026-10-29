@@ -28,3 +28,22 @@ TOOLS = [
 DECLINED = "The user declined. Do not send this message."
 
 
+def run_tool(
+    name: str,
+    args: dict,
+    inbox: list[dict],
+    approve: Callable[[str, str], bool],
+    send: Callable[[str, str], None] | None = None,
+    out: Callable[[str], None] = print,
+) -> str:
+    """Run one tool call and return the result text for Claude."""
+    if name == "read_inbox":
+        return json.dumps(inbox)
+    if name == "send_message":
+        if approve(args["to"], args["text"]):
+            if send is not None:
+                send(args["to"], args["text"])  # plug in your real email API here
+            out("Sent.")
+            return "Sent."
+        return DECLINED
+    return f"Unknown tool: {name}"
