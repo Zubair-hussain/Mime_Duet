@@ -43,3 +43,24 @@ def validate(settings: Settings) -> Settings:
     return settings
 
 
+def load_settings(path: str | Path | None = None) -> Settings:
+    """Load settings from a JSON file.
+
+    No path means "use duet.config.json if it exists, otherwise the defaults".
+    A path you pass yourself must exist.
+    """
+    file = Path(path or DEFAULT_CONFIG_PATH)
+    if not file.exists():
+        if path is not None:
+            raise FileNotFoundError(f"Config file not found: {file}")
+        return Settings()
+    try:
+        raw = json.loads(file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as err:
+        raise ValueError(f"Config file is not valid JSON: {file}") from err
+    if not isinstance(raw, dict):
+        raise ValueError("Config file must contain a JSON object")
+    unknown = sorted(set(raw) - {field.name for field in fields(Settings)})
+    if unknown:
+        raise ValueError(f"Unknown setting(s): {', '.join(unknown)}")
+    return validate(replace(Settings(), **raw))
