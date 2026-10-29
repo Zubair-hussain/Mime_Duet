@@ -25,3 +25,12 @@ def validate_inbox(items: object) -> list[dict]:
     return items
 
 
+def load_inbox(path: str | Path | None = None) -> list[dict]:
+    """Read the inbox from a JSON file, or use the demo inbox if the file is absent."""
+    if path is None or not Path(path).exists():
+        return list(DEFAULT_INBOX)
+    try:
+        items = json.loads(Path(path).read_text(encoding="utf-8"))
+    except json.JSONDecodeError as err:
+        raise ValueError(f"Inbox file is not valid JSON: {path}") from err
+    return validate_inbox(items)
