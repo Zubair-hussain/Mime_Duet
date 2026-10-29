@@ -32,3 +32,9 @@ def test_workflows_are_valid_yaml_with_jobs(name):
     assert workflow["jobs"]
 
 
+def test_deploy_uses_the_official_pages_actions():
+    text = steps_text(load("deploy.yml"))
+    for action in ("configure-pages", "upload-pages-artifact", "deploy-pages"):
+        assert f"actions/{action}" in text
+
+
