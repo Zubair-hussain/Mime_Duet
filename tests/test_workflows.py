@@ -24,3 +24,11 @@ def steps_text(workflow):
     return " ".join(chunks)
 
 
+@pytest.mark.parametrize("name", ["ci.yml", "deploy.yml"])
+def test_workflows_are_valid_yaml_with_jobs(name):
+    workflow = load(name)
+    assert workflow["name"]
+    assert workflow["on"]
+    assert workflow["jobs"]
+
+
