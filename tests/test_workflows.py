@@ -72,3 +72,9 @@ def test_ci_lints_with_ruff():
 def test_workflows_run_on_the_production_branch():
     for name in ("ci.yml", "deploy.yml"):
         assert load(name)["on"]["push"]["branches"] == ["live/production"]
+
+
+def test_dependabot_skips_pillow_13():
+    config = yaml.safe_load((WORKFLOWS.parent / "dependabot.yml").read_text(encoding="utf-8"))
+    pip = next(u for u in config["updates"] if u["package-ecosystem"] == "pip")
+    assert {"dependency-name": "pillow", "versions": [">=13"]} in pip["ignore"]

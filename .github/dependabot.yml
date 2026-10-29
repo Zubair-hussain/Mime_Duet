@@ -4,6 +4,10 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
+    ignore:
+      # Pillow 13 drops Python 3.10, which this project still supports.
+      - dependency-name: pillow
+        versions: [">=13"]
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
