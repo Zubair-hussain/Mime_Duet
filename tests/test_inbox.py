@@ -18,3 +18,10 @@ def test_missing_file_returns_the_demo_inbox(tmp_path):
     assert load_inbox(tmp_path / "none.json") == DEFAULT_INBOX
 
 
+def test_reads_messages_from_a_file(tmp_path):
+    messages = [{"from": "A", "subject": "B", "body": "C"}]
+    file = tmp_path / "inbox.json"
+    file.write_text(json.dumps(messages))
+    assert load_inbox(file) == messages
+
+
