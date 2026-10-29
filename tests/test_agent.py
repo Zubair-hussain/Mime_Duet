@@ -101,3 +101,14 @@ def test_a_refusal_returns_none_and_says_so(settings, inbox):
     assert printed == ["Mini Duet declined this check-in."]
 
 
+def test_every_request_carries_the_tools_and_the_fallback(settings, inbox):
+    client = FakeClient(
+        response("tool_use", tool_use_block("t1", "read_inbox")),
+        response("end_turn", text_block("Done.")),
+    )
+    check_in(client, settings, inbox, always(True), lambda text: None)
+    for call in client.calls:
+        assert call["tools"] == TOOLS
+        assert call["fallbacks"] == "default"
+
+
