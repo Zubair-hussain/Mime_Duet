@@ -41,3 +41,8 @@ Both must pass before you open a pull request. Coverage must stay at or above 95
 - Add or update tests for the change. Use the fake client in `tests/helpers.py`, never the real API.
 - Describe what changed and why in the pull request.
 
+## Rules of the project
+
+- Never commit an API key or any other secret.
+- Keep the human approval step for anything that sends, pays or deletes.
+- Do not change the model name without updating the README and the tests.
