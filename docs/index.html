@@ -54,6 +54,41 @@
         <article class="card"><span class="num">4</span><h3>Asks you</h3><p>Nothing is sent until you type <code>y</code>. You stay in charge.</p></article>
       </div>
     </section>
+<!-- @section: steps -->
+    <section class="section wrap reveal" id="steps">
+      <h2>Quick start</h2>
+      <p class="section-lead">Six steps. You need Python 3.10 or newer and an Anthropic API key.</p>
+      <ol class="steps">
+        <li>
+          <h3>Get an API key</h3>
+          <p>Sign in at <a href="https://console.anthropic.com">console.anthropic.com</a>, add a little credit under Billing, then create a key under API keys. Copy it once and keep it safe.</p>
+        </li>
+        <li>
+          <h3>Get the code</h3>
+          <div class="code"><pre id="code-clone">git clone https://github.com/Zubair-hussain/Mime_Duet.git
+cd Mime_Duet</pre><button class="copy" type="button" data-copy="code-clone">Copy</button></div>
+        </li>
+        <li>
+          <h3>Create a virtual environment</h3>
+          <div class="code"><pre id="code-venv">python -m venv .venv
+.venv\Scripts\activate        # Windows
+source .venv/bin/activate     # macOS / Linux</pre><button class="copy" type="button" data-copy="code-venv">Copy</button></div>
+        </li>
+        <li>
+          <h3>Install the packages</h3>
+          <div class="code"><pre id="code-install">pip install -r requirements.txt</pre><button class="copy" type="button" data-copy="code-install">Copy</button></div>
+        </li>
+        <li>
+          <h3>Set your API key</h3>
+          <div class="code"><pre id="code-key">$env:ANTHROPIC_API_KEY = "your-key-here"     # Windows PowerShell
+export ANTHROPIC_API_KEY="your-key-here"     # macOS / Linux</pre><button class="copy" type="button" data-copy="code-key">Copy</button></div>
+        </li>
+        <li>
+          <h3>Run it</h3>
+          <div class="code"><pre id="code-run">python -m duet --once</pre><button class="copy" type="button" data-copy="code-run">Copy</button></div>
+        </li>
+      </ol>
+    </section>
 <!-- @end -->
   </main>
   <footer class="footer">
