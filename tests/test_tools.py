@@ -75,3 +75,7 @@ def test_approval_receives_the_recipient_and_the_text(inbox):
     assert seen == [("Sara", "Hi")]
 
 
+def test_an_unknown_tool_is_reported(inbox):
+    assert (
+        run_tool("delete_everything", {}, inbox, always(True)) == "Unknown tool: delete_everything"
+    )
