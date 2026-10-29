@@ -28,3 +28,9 @@ def test_a_message_is_sent_only_after_approval(monkeypatch, capsys):
     assert "Sara" in capsys.readouterr().out
 
 
+def test_a_declined_message_is_not_sent(monkeypatch):
+    monkeypatch.setattr("builtins.input", lambda prompt: "n")
+    result = mini_duet.run_tool("send_message", {"to": "Sara", "text": "Hi"})
+    assert result == "The user declined. Do not send this message."
+
+
