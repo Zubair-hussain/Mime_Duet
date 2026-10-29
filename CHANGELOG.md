@@ -9,3 +9,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 - Nothing yet.
 
+## [1.0.0] - 2026-10-29
+
+First public release.
+
+### Added
+
+- A README with a demo GIF, setup steps, deploy steps and a versions table.
+- `CONTRIBUTING.md`, `SECURITY.md`, issue templates, a pull request template and Dependabot updates.
+
