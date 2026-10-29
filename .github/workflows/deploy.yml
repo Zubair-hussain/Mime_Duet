@@ -1,6 +1,9 @@
 name: Deploy site
 
 # Publishes the static page in docs/ to GitHub Pages.
+# It runs on every push to live/production that changes docs/ or this file. GitHub skips
+# path-filtered workflows when a brand-new branch is first pushed, so a first deploy can also
+# be started by hand: Actions > Deploy site > Run workflow.
 # One-time setup: Settings > Pages > Build and deployment > Source: GitHub Actions.
 # The production branch is live/production. If it is not the default branch, add it under
 # Settings > Environments > github-pages > Deployment branches and tags.
