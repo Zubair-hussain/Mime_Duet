@@ -16,3 +16,10 @@ def test_y_approves(answer):
     assert ask_approval("Sara", "Hi", input_fn=lambda prompt: answer, out=lambda text: None) is True
 
 
+@pytest.mark.parametrize("answer", ["n", "", "yes", "maybe"])
+def test_anything_else_declines(answer):
+    assert (
+        ask_approval("Sara", "Hi", input_fn=lambda prompt: answer, out=lambda text: None) is False
+    )
+
+
