@@ -111,6 +111,18 @@ export ANTHROPIC_API_KEY="your-key-here"     # macOS / Linux</pre><button class=
         <figcaption>Illustrative demo with the sample inbox.</figcaption>
       </figure>
     </section>
+<!-- @section: quality -->
+    <section class="section wrap reveal" id="quality">
+      <h2>Built to a professional standard</h2>
+      <p class="section-lead">Every push is checked automatically.</p>
+      <div class="grid grid-3">
+        <article class="card"><h3>Tested</h3><p>A pytest suite with a fake API client. No key, no cost, no network.</p></article>
+        <article class="card"><h3>Measured</h3><p>Coverage is reported on every push, and the build fails below 95%.</p></article>
+        <article class="card"><h3>Automated</h3><p>GitHub Actions runs lint and tests on Python 3.10 to 3.13, then deploys this page.</p></article>
+      </div>
+      <div class="code code-wide"><pre id="code-test">pip install -r requirements-dev.txt
+python -m pytest --cov</pre><button class="copy" type="button" data-copy="code-test">Copy</button></div>
+    </section>
 <!-- @end -->
   </main>
   <footer class="footer">
