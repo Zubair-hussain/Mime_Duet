@@ -74,3 +74,7 @@ def test_check_in_skips_blocks_that_are_neither_tool_calls_nor_text(monkeypatch,
     assert "All done." in capsys.readouterr().out
 
 
+def test_check_in_reports_a_refusal(monkeypatch, capsys):
+    monkeypatch.setattr(mini_duet, "client", FakeClient(response("refusal")))
+    mini_duet.check_in()
+    assert "Mini Duet declined this check-in." in capsys.readouterr().out
