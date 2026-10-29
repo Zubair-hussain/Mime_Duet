@@ -94,3 +94,8 @@ def test_every_required_section_exists(page, section):
     assert section in page.ids
 
 
+def test_in_page_links_point_at_real_ids(page):
+    missing = [anchor for anchor in page.anchors if anchor and anchor not in page.ids]
+    assert missing == []
+
+
