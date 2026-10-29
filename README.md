@@ -17,3 +17,7 @@ Mini Duet checks an inbox on a schedule, writes you a short brief of what needs 
 
 *A sample run with the demo inbox. This GIF is an illustration, drawn by `scripts/make_demo_gif.py`.*
 
+## Live site
+
+A one-page site for this project lives in [`docs/`](docs/) and deploys to GitHub Pages. See [Deploy the website](#deploy-the-website) for the steps. Once Pages is on, it is live at **https://zubair-hussain.github.io/Mime_Duet/**.
+
