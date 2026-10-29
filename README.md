@@ -38,3 +38,12 @@ It will create the files, set up the virtual environment and install the package
 - [Visual Studio Code](https://code.visualstudio.com/) with the **Python** extension
 - An Anthropic Console account and an API key
 
+## Step 1: Get your API key (you do this yourself)
+
+1. Go to **[console.anthropic.com](https://console.anthropic.com)** and sign in.
+2. Open **Billing** and add a small amount of credit.
+3. Open **API keys** and click **Create key**. Give it a name.
+4. **Copy the key now.** You will not be able to see it again. Keep it somewhere safe.
+
+Never share your key, and never paste it into your code.
+
