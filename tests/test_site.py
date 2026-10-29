@@ -63,3 +63,10 @@ class Page(HTMLParser):
             self.title += data
 
 
+@pytest.fixture(scope="module")
+def page():
+    parsed = Page()
+    parsed.feed((DOCS / "index.html").read_text(encoding="utf-8"))
+    return parsed
+
+
