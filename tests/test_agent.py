@@ -94,3 +94,10 @@ def test_a_declined_message_is_reported_back_to_the_model(settings, inbox):
     assert client.calls[1]["messages"][-1]["content"][0]["content"] == DECLINED
 
 
+def test_a_refusal_returns_none_and_says_so(settings, inbox):
+    client = FakeClient(response("refusal"))
+    printed = []
+    assert check_in(client, settings, inbox, always(True), printed.append) is None
+    assert printed == ["Mini Duet declined this check-in."]
+
+
