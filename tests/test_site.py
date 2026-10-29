@@ -121,3 +121,8 @@ def test_config_defines_every_key_the_page_needs(config_js):
         assert re.search(rf"\b{key}\s*:", config_js), key
 
 
+def test_every_config_reference_in_the_html_exists_in_config(page, config_js):
+    for reference in page.config_refs:
+        assert re.search(rf"\b{reference}\s*:", config_js), reference
+
+
