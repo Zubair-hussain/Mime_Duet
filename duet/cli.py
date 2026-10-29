@@ -29,3 +29,37 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def main(
+    argv: Sequence[str] | None = None,
+    client_factory: Callable[[], object] = anthropic.Anthropic,
+    sleep: Callable[[float], None] = time.sleep,
+) -> int:
+    """Run Mini Duet. Returns the exit code: 0 ok, 1 auth problem, 2 bad config."""
+    args = build_parser().parse_args(argv)
+    try:
+        settings = load_settings(args.config)
+        inbox = load_inbox(args.inbox or settings.inbox_path)
+    except (FileNotFoundError, ValueError) as err:
+        print(f"Config error: {err}")
+        return 2
+    client = client_factory()
+
+    def check() -> None:
+        check_in(client, settings, inbox)
+
+    try:
+        if args.once:
+            check()
+        else:
+            run_forever(check, settings.check_every_seconds, sleep=sleep)
+    except anthropic.AuthenticationError:
+        print("Authentication failed. Check your API key (see the README, Step 1).")
+        return 1
+    except TypeError as err:  # the SDK raises this when no key is set at all
+        if "authentication" not in str(err).lower():
+            raise
+        print(AUTH_HELP)
+        return 1
+    except KeyboardInterrupt:
+        print("\nStopped.")
+    return 0
