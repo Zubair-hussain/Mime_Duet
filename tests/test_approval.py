@@ -29,3 +29,11 @@ def test_the_draft_is_shown_before_asking():
     assert "Sara" in shown[0]
 
 
+def test_the_prompt_text_is_stable():
+    prompts = []
+    ask_approval(
+        "Sara", "Hi", input_fn=lambda prompt: prompts.append(prompt) or "y", out=lambda text: None
+    )
+    assert prompts == ["Approve? (y/n) "]
+
+
