@@ -52,3 +52,6 @@ def test_valid_inbox_is_returned_unchanged():
     assert validate_inbox(items) is items
 
 
+def test_the_bundled_inbox_file_is_valid():
+    bundled = Path(__file__).resolve().parent.parent / "data" / "inbox.json"
+    assert load_inbox(bundled) == DEFAULT_INBOX
