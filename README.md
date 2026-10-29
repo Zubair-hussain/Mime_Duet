@@ -136,3 +136,26 @@ python mini_duet.py
 
 Exit codes: `0` ok, `1` API key problem, `2` bad config or inbox file.
 
+## Custom files
+
+You can change how Mini Duet behaves without editing any Python.
+
+| File | What it controls |
+|---|---|
+| `duet.config.json` | Model, effort, `max_tokens`, how often it checks in, the inbox path, the system prompt |
+| `data/inbox.json` | The messages Mini Duet reads. Each message needs `from`, `subject` and `body` |
+
+Example `duet.config.json`:
+
+```json
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "max_tokens": 16000,
+  "check_every_seconds": 10800,
+  "inbox_path": "data/inbox.json"
+}
+```
+
+`effort` can be `low`, `medium`, `high`, `xhigh` or `max`. Mistakes in these files give a clear error and exit code `2`.
+
