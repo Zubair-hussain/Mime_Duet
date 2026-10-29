@@ -193,3 +193,31 @@ Mime_Duet/
 
 The model is `claude-opus-5-5` with `effort: "medium"`. `fallbacks="default"` is a safety net: if a request is ever declined, the API can retry it on a backup model.
 
+## Tests and coverage
+
+The tests use a fake API client, so they need no API key, cost nothing and never touch the network.
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+Run the tests:
+
+```bash
+python -m pytest
+```
+
+Run them with a coverage report:
+
+```bash
+python -m pytest --cov
+```
+
+Check the code style:
+
+```bash
+ruff check .
+```
+
+Coverage is checked on every push, and the build fails if it drops below 95%. The tests also check that the website is complete, that every link and image on it exists, and that the workflow files are valid.
+
