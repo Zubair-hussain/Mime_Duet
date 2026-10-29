@@ -133,3 +133,10 @@ def test_the_portfolio_link_is_set(config_js):
     assert "YOUR-" not in match.group(1)
 
 
+def test_the_github_link_points_at_the_repo(config_js):
+    match = re.search(r'githubUrl:\s*"([^"]+)"', config_js)
+    assert match
+    assert match.group(1).startswith("https://github.com/")
+    assert "YOUR-" not in match.group(1)
+
+
