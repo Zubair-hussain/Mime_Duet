@@ -234,3 +234,15 @@ The page in `docs/` is plain HTML, CSS and JavaScript, so GitHub Pages can host 
 
 The production branch is `live/production`. GitHub only lets Pages deploy from branches its `github-pages` environment allows, so either make `live/production` the default branch (**Settings > Branches**) or add it under **Settings > Environments > github-pages > Deployment branches and tags**. Every deployment also appears under **Deployments** on the repository's home page.
 
+## Make the site yours
+
+Everything personal lives in one file, so you never have to touch the HTML.
+
+1. Open [`docs/config.js`](docs/config.js).
+2. Check `ownerName` and `portfolioUrl`. Set `contactEmail` if you want the "Get in touch" button. `githubUrl` already points at this repository.
+3. Save, commit and push to `live/production`. The site redeploys on its own.
+
+A link that is still a placeholder (it contains `YOUR-` or `example.com`) stays hidden on the page until you set it, so visitors never see a broken button.
+
+To change the logo, replace `docs/assets/zh-mark.svg` (the header and footer) and `docs/assets/favicon.svg` (the tab icon and the About section).
+
