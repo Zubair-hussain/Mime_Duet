@@ -47,3 +47,39 @@ It will create the files, set up the virtual environment and install the package
 
 Never share your key, and never paste it into your code.
 
+## Step 2: Get the code and set up the project
+
+Download the project and open it in VS Code:
+
+```bash
+git clone https://github.com/Zubair-hussain/Mime_Duet.git
+cd Mime_Duet
+code .
+```
+
+Then open the terminal (**Ctrl + `**).
+
+Create a virtual environment and turn it on:
+
+```bash
+python -m venv .venv
+```
+
+Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+macOS / Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+Install the packages:
+
+```bash
+pip install -r requirements.txt
+```
+
