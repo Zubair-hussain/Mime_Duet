@@ -46,3 +46,24 @@ def run_tool_calls(
     return results
 
 
+def check_in(
+    client,
+    settings: Settings,
+    inbox: list[dict],
+    approve: Callable[[str, str], bool] = ask_approval,
+    out: Callable[[str], None] = print,
+) -> str | None:
+    """Run one check-in. Returns the brief, or None if Claude declined."""
+    messages = [{"role": "user", "content": CHECK_IN_PROMPT}]
+    while True:  # the agent loop
+        response = client.beta.messages.create(**build_request(settings, messages))
+        if response.stop_reason != "tool_use":
+            break
+        messages.append({"role": "assistant", "content": response.content})
+        messages.append({"role": "user", "content": run_tool_calls(response, inbox, approve, out)})
+    if response.stop_reason == "refusal":
+        out("Mini Duet declined this check-in.")
+        return None
+    brief = extract_text(response)
+    out("\n--- Your brief ---\n" + brief)
+    return brief
