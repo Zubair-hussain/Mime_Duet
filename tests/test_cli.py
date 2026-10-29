@@ -104,3 +104,10 @@ def test_a_missing_key_exits_with_code_1(tmp_path, monkeypatch, capsys):
     assert AUTH_HELP in capsys.readouterr().out
 
 
+def test_other_type_errors_are_not_hidden(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    client = RaisingClient(TypeError("something else entirely"))
+    with pytest.raises(TypeError, match="something else"):
+        main(["--once"], client_factory=lambda: client)
+
+
