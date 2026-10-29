@@ -35,3 +35,10 @@ First public release.
 - A demo GIF drawn by `scripts/make_demo_gif.py`.
 - Tests that check the page: sections, links, images, and the local files it uses.
 
+## [0.3.0] - 2026-10-29
+
+### Added
+
+- A pytest suite with a fake API client, so tests need no key and no network.
+- A coverage gate at 95%, and `ruff` linting.
+
