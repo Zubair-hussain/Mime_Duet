@@ -97,3 +97,10 @@ def test_a_rejected_key_exits_with_code_1(tmp_path, monkeypatch, capsys):
     assert "Authentication failed" in capsys.readouterr().out
 
 
+def test_a_missing_key_exits_with_code_1(tmp_path, monkeypatch, capsys):
+    monkeypatch.chdir(tmp_path)
+    client = RaisingClient(TypeError("Could not resolve authentication method."))
+    assert main(["--once"], client_factory=lambda: client) == 1
+    assert AUTH_HELP in capsys.readouterr().out
+
+
