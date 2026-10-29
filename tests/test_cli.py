@@ -111,3 +111,10 @@ def test_other_type_errors_are_not_hidden(tmp_path, monkeypatch):
         main(["--once"], client_factory=lambda: client)
 
 
+def test_ctrl_c_stops_politely(tmp_path, monkeypatch, capsys):
+    monkeypatch.chdir(tmp_path)
+    client = RaisingClient(KeyboardInterrupt())
+    assert main(["--once"], client_factory=lambda: client) == 0
+    assert "Stopped." in capsys.readouterr().out
+
+
