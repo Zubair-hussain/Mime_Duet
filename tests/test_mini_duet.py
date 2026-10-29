@@ -18,3 +18,7 @@ def test_two_tools_are_defined():
     assert [tool["name"] for tool in mini_duet.tools] == ["read_inbox", "send_message"]
 
 
+def test_read_inbox_returns_the_demo_inbox():
+    assert json.loads(mini_duet.run_tool("read_inbox", {})) == mini_duet.INBOX
+
+
