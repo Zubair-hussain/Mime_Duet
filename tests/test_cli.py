@@ -34,3 +34,10 @@ class RaisingClient:
         raise self._error
 
 
+class FakeAuthError(anthropic.AuthenticationError):
+    """An authentication error we can build without a real HTTP response."""
+
+    def __init__(self):
+        Exception.__init__(self, "invalid x-api-key")
+
+
