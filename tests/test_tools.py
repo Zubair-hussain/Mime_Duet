@@ -50,3 +50,16 @@ def test_an_approved_message_works_without_a_send_hook(inbox):
     assert result == "Sent."
 
 
+def test_a_declined_message_is_not_sent(inbox):
+    sent = []
+    result = run_tool(
+        "send_message",
+        {"to": "Sara", "text": "Hi"},
+        inbox,
+        always(False),
+        send=lambda to, text: sent.append((to, text)),
+    )
+    assert result == DECLINED
+    assert sent == []
+
+
