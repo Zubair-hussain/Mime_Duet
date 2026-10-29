@@ -58,3 +58,14 @@ def test_config_and_inbox_files_are_used(tmp_path):
     assert client.calls[0]["max_tokens"] == 99
 
 
+def test_the_inbox_path_comes_from_the_config_by_default(tmp_path):
+    inbox = write_json(tmp_path / "mine.json", [{"from": "Sentinel", "subject": "S", "body": "S"}])
+    config = write_json(tmp_path / "config.json", {"inbox_path": str(inbox)})
+    client = FakeClient(
+        response("tool_use", tool_use_block("t1", "read_inbox")),
+        response("end_turn", text_block("Done.")),
+    )
+    main(["--once", "--config", str(config)], client_factory=lambda: client)
+    assert "Sentinel" in client.calls[1]["messages"][-1]["content"][0]["content"]
+
+
