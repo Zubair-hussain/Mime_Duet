@@ -64,3 +64,24 @@ def test_a_check_in_without_tools_returns_the_brief(settings, inbox):
     assert "All quiet." in printed[-1]
 
 
+def test_a_check_in_runs_the_whole_tool_loop(settings, inbox):
+    client = FakeClient(
+        response("tool_use", tool_use_block("t1", "read_inbox")),
+        response("tool_use", tool_use_block("t2", "send_message", {"to": "Sara", "text": "Hi"})),
+        response("end_turn", text_block("Done.")),
+    )
+    brief = check_in(client, settings, inbox, always(True), lambda text: None)
+    assert brief == "Done."
+    assert len(client.calls) == 3
+    final_messages = client.calls[2]["messages"]
+    assert [message["role"] for message in final_messages] == [
+        "user",
+        "assistant",
+        "user",
+        "assistant",
+        "user",
+    ]
+    assert final_messages[-1]["content"][0]["tool_use_id"] == "t2"
+    assert final_messages[-1]["content"][0]["content"] == "Sent."
+
+
