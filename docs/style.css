@@ -249,3 +249,27 @@ h1 {
   font-size: 14px;
 }
 
+.section {
+  padding: 76px 0;
+  border-top: 1px solid var(--line);
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.section-lead {
+  margin: 0 0 38px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
