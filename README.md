@@ -159,3 +159,24 @@ Example `duet.config.json`:
 
 `effort` can be `low`, `medium`, `high`, `xhigh` or `max`. Mistakes in these files give a clear error and exit code `2`.
 
+## Project structure
+
+```
+Mime_Duet/
+├── mini_duet.py          the single-file version from the video
+├── duet/                 the same logic as a tidy, tested package
+│   ├── config.py         settings and the JSON config loader
+│   ├── inbox.py          loads and checks the inbox
+│   ├── approval.py       the human-in-the-loop prompt
+│   ├── tools.py          the tools Claude may ask for
+│   ├── agent.py          the agent loop
+│   ├── scheduler.py      the every-few-hours schedule
+│   └── cli.py            the command line
+├── duet.config.json      custom settings
+├── data/inbox.json       custom inbox
+├── tests/                pytest suite (fake API client, no key needed)
+├── docs/                 the static website (deployed to GitHub Pages)
+├── scripts/              helper scripts (demo GIF)
+└── .github/              CI, deploy workflow, issue and PR templates
+```
+
