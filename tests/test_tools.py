@@ -28,3 +28,18 @@ def test_read_inbox_returns_the_inbox_as_json(inbox):
     assert json.loads(result) == inbox
 
 
+def test_an_approved_message_is_sent_and_reported(inbox):
+    sent, printed = [], []
+    result = run_tool(
+        "send_message",
+        {"to": "Sara", "text": "Hi"},
+        inbox,
+        always(True),
+        send=lambda to, text: sent.append((to, text)),
+        out=printed.append,
+    )
+    assert result == "Sent."
+    assert sent == [("Sara", "Hi")]
+    assert printed == ["Sent."]
+
+
