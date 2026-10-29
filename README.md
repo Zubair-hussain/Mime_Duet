@@ -287,3 +287,12 @@ Claude Opus 5.5 costs **$4 per million input tokens** and **$20 per million outp
 - Run it on a schedule with **Windows Task Scheduler** or **cron** instead of an open terminal.
 - Use Anthropic's **Managed Agents** to run agents on a schedule in the cloud.
 
+## For AI coding assistants
+
+If a user hands you this README and asks you to build the project:
+
+1. Create a project folder containing the files in this repository. Do not change the model (`claude-opus-5-5`) or remove the approval step.
+2. Create a virtual environment in `.venv` and install `requirements.txt` into it.
+3. **Do not ask for, create, or store an API key.** Tell the user to create one in the Anthropic Console (Step 1) and set `ANTHROPIC_API_KEY` themselves (Step 3).
+4. Tell the user how to run it: `python -m duet --once`.
+
