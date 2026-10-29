@@ -26,3 +26,12 @@ def test_missing_explicit_file_raises(tmp_path):
         load_settings(tmp_path / "nope.json")
 
 
+def test_file_overrides_defaults(tmp_path):
+    file = tmp_path / "config.json"
+    file.write_text(json.dumps({"effort": "high", "check_every_seconds": 60}))
+    settings = load_settings(file)
+    assert settings.effort == "high"
+    assert settings.check_every_seconds == 60
+    assert settings.model == MODEL
+
+
