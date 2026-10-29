@@ -274,3 +274,10 @@ Check out any version with `git checkout v0.2.0`.
 
 Claude Opus 5.5 costs **$4 per million input tokens** and **$20 per million output tokens**. A token is about three quarters of a word. A small check-in like this one usually costs a few cents. Set a spending limit in the Console to stay safe.
 
+## Safety rules
+
+- Never hard-code your API key. Use the environment variable.
+- Keep `.env` files out of Git (already in `.gitignore`).
+- Keep a human approval step for anything that sends, pays or deletes.
+- Set a spending limit in the Anthropic Console.
+
