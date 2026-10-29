@@ -15,3 +15,12 @@ def load(name):
     return workflow
 
 
+def steps_text(workflow):
+    """All the step commands and actions in a workflow, as one string."""
+    chunks = []
+    for job in workflow["jobs"].values():
+        for step in job["steps"]:
+            chunks.append(str(step.get("run", "")) + " " + str(step.get("uses", "")))
+    return " ".join(chunks)
+
+
