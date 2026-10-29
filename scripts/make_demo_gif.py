@@ -99,3 +99,21 @@ def build_frames():
     return frames
 
 
+def main():
+    """Write docs/assets/demo.gif."""
+    frames = build_frames()
+    images = [frame.convert("P", palette=Image.ADAPTIVE, colors=64) for frame, _ in frames]
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    images[0].save(
+        OUT,
+        save_all=True,
+        append_images=images[1:],
+        duration=[ms for _, ms in frames],
+        loop=0,
+        optimize=True,
+    )
+    print(f"Wrote {OUT} ({OUT.stat().st_size // 1024} KB, {len(frames)} frames)")
+
+
+if __name__ == "__main__":
+    main()
