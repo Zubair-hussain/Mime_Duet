@@ -34,3 +34,7 @@ def test_a_declined_message_is_not_sent(monkeypatch):
     assert result == "The user declined. Do not send this message."
 
 
+def test_an_unknown_tool_is_reported():
+    assert mini_duet.run_tool("nope", {}) == "Unknown tool: nope"
+
+
