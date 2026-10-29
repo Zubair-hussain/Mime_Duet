@@ -49,3 +49,12 @@ def test_once_runs_a_single_check_in(tmp_path, monkeypatch, capsys):
     assert "All quiet." in capsys.readouterr().out
 
 
+def test_config_and_inbox_files_are_used(tmp_path):
+    config = write_json(tmp_path / "config.json", {"effort": "high", "max_tokens": 99})
+    inbox = write_json(tmp_path / "inbox.json", [{"from": "A", "subject": "B", "body": "C"}])
+    client = quiet_client()
+    main(["--once", "--config", str(config), "--inbox", str(inbox)], client_factory=lambda: client)
+    assert client.calls[0]["output_config"] == {"effort": "high"}
+    assert client.calls[0]["max_tokens"] == 99
+
+
