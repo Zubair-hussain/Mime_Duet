@@ -69,3 +69,6 @@ def test_ci_lints_with_ruff():
     assert "ruff check" in steps_text(load("ci.yml"))
 
 
+def test_workflows_run_on_the_production_branch():
+    for name in ("ci.yml", "deploy.yml"):
+        assert load(name)["on"]["push"]["branches"] == ["live/production"]
