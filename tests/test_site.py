@@ -99,3 +99,8 @@ def test_in_page_links_point_at_real_ids(page):
     assert missing == []
 
 
+def test_every_local_file_the_page_uses_exists(page):
+    missing = [asset for asset in page.assets if not (DOCS / asset).is_file()]
+    assert missing == []
+
+
