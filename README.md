@@ -281,3 +281,9 @@ Claude Opus 5.5 costs **$4 per million input tokens** and **$20 per million outp
 - Keep a human approval step for anything that sends, pays or deletes.
 - Set a spending limit in the Anthropic Console.
 
+## Level it up
+
+- Connect a real inbox, for example the Gmail API, in place of `data/inbox.json`.
+- Run it on a schedule with **Windows Task Scheduler** or **cron** instead of an open terminal.
+- Use Anthropic's **Managed Agents** to run agents on a schedule in the cloud.
+
