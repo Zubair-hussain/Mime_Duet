@@ -462,3 +462,27 @@ code {
   font-size: 14px;
 }
 
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer-brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-brand img {
+  height: 26px;
+  width: auto;
+}
+
