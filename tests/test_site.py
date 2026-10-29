@@ -111,3 +111,8 @@ def test_every_image_has_alt_text_and_a_size(page):
         assert image.get("width") and image.get("height"), image
 
 
+def test_no_third_party_scripts_are_loaded(page):
+    assert page.scripts
+    assert all(not source.startswith(("http://", "https://")) for source in page.scripts)
+
+
