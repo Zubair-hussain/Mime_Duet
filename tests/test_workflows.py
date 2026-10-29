@@ -38,3 +38,9 @@ def test_deploy_uses_the_official_pages_actions():
         assert f"actions/{action}" in text
 
 
+def test_deploy_has_the_permissions_pages_needs():
+    permissions = load("deploy.yml")["permissions"]
+    assert permissions["pages"] == "write"
+    assert permissions["id-token"] == "write"
+
+
