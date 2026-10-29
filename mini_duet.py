@@ -50,3 +50,14 @@ def ask_approval(to, text):
     return input("Approve? (y/n) ").strip().lower() == "y"
 
 
+def run_tool(name, args):
+    if name == "read_inbox":
+        return json.dumps(INBOX)
+    if name == "send_message":
+        if ask_approval(args["to"], args["text"]):
+            print("Sent.")  # call your real email API here
+            return "Sent."
+        return "The user declined. Do not send this message."
+    return f"Unknown tool: {name}"
+
+
