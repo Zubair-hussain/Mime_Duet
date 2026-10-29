@@ -43,3 +43,10 @@ def test_an_approved_message_is_sent_and_reported(inbox):
     assert printed == ["Sent."]
 
 
+def test_an_approved_message_works_without_a_send_hook(inbox):
+    result = run_tool(
+        "send_message", {"to": "Sara", "text": "Hi"}, inbox, always(True), out=lambda text: None
+    )
+    assert result == "Sent."
+
+
