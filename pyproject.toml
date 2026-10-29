@@ -5,3 +5,7 @@ testpaths = ["tests"]
 pythonpath = ["."]
 addopts = "-ra"
 
+[tool.coverage.run]
+source = ["duet", "mini_duet"]
+branch = true
+
