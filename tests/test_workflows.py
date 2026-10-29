@@ -54,3 +54,8 @@ def test_deploy_can_be_started_by_hand():
     assert "workflow_dispatch" in load("deploy.yml")["on"]
 
 
+def test_ci_tests_on_several_python_versions():
+    matrix = load("ci.yml")["jobs"]["test"]["strategy"]["matrix"]["python-version"]
+    assert len(matrix) >= 3
+
+
