@@ -25,3 +25,16 @@ def test_zero_runs_does_nothing():
     assert run_forever(fail, 1, sleep=lambda seconds: None, max_runs=0) == 0
 
 
+def test_an_endless_loop_stops_when_interrupted():
+    sleeps = []
+
+    def interrupt_on_third_sleep(seconds):
+        sleeps.append(seconds)
+        if len(sleeps) == 3:
+            raise KeyboardInterrupt
+
+    calls = []
+    with pytest.raises(KeyboardInterrupt):
+        run_forever(lambda: calls.append(1), 2, sleep=interrupt_on_third_sleep)
+    assert len(calls) == 3
+    assert sleeps == [2, 2, 2]
