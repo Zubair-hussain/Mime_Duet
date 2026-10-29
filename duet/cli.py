@@ -17,3 +17,15 @@ from .scheduler import run_forever
 AUTH_HELP = "No API key found. Set ANTHROPIC_API_KEY (see the README, Step 3)."
 
 
+def build_parser() -> argparse.ArgumentParser:
+    """The command line options."""
+    parser = argparse.ArgumentParser(
+        prog="duet", description="Mini Duet: a proactive assistant built on Claude."
+    )
+    parser.add_argument("--config", help="path to a settings JSON file (default: duet.config.json)")
+    parser.add_argument("--inbox", help="path to an inbox JSON file (overrides the settings)")
+    parser.add_argument("--once", action="store_true", help="run one check-in and exit")
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
+    return parser
+
+
