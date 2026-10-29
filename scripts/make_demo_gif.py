@@ -41,3 +41,13 @@ SCRIPT = [
 ]
 
 
+def load_font(size):
+    """Consolas on Windows, otherwise whatever monospace Pillow can find."""
+    for name in (FONTS + "consola.ttf", "DejaVuSansMono.ttf"):
+        try:
+            return ImageFont.truetype(name, size)
+        except OSError:
+            continue
+    return ImageFont.load_default()
+
+
