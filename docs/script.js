@@ -83,3 +83,10 @@ function setYear() {
   }
 }
 
+// Start everything once the page is ready
+document.addEventListener("DOMContentLoaded", () => {
+  applyConfig();
+  setupCopyButtons();
+  setupReveal();
+  setYear();
+});
