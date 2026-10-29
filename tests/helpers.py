@@ -9,3 +9,8 @@ def text_block(text):
     return SimpleNamespace(type="text", text=text)
 
 
+def tool_use_block(block_id, name, tool_input=None):
+    """A tool_use block: Claude asking us to run a tool."""
+    return SimpleNamespace(type="tool_use", id=block_id, name=name, input=tool_input or {})
+
+
