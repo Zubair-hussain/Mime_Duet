@@ -529,3 +529,23 @@ code {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .card,
+  .btn {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media print {
+  .nav,
+  .copy,
+  .skip {
+    display: none;
+  }
+}
