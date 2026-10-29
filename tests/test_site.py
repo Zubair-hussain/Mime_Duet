@@ -70,3 +70,8 @@ def page():
     return parsed
 
 
+@pytest.fixture(scope="module")
+def config_js():
+    return (DOCS / "config.js").read_text(encoding="utf-8")
+
+
