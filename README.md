@@ -246,3 +246,18 @@ A link that is still a placeholder (it contains `YOUR-` or `example.com`) stays 
 
 To change the logo, replace `docs/assets/zh-mark.svg` (the header and footer) and `docs/assets/favicon.svg` (the tab icon and the About section).
 
+## Versions and tags
+
+Releases are tagged on the `live/production` branch. See the [Tags page](https://github.com/Zubair-hussain/Mime_Duet/tags) and the [CHANGELOG](CHANGELOG.md).
+
+| Tag | What it adds |
+|---|---|
+| `v0.1.0` | The single-file assistant from the video |
+| `v0.2.0` | The modular `duet` package, custom config and inbox files |
+| `v0.3.0` | The pytest suite and the coverage gate |
+| `v0.4.0` | The one-page portfolio website |
+| `v0.5.0` | CI and GitHub Pages deployment |
+| `v1.0.0` | Docs, templates and the first public release |
+
+Check out any version with `git checkout v0.2.0`.
+
