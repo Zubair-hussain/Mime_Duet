@@ -35,3 +35,10 @@ def test_file_overrides_defaults(tmp_path):
     assert settings.model == MODEL
 
 
+def test_invalid_json_raises(tmp_path):
+    file = tmp_path / "config.json"
+    file.write_text("{not json")
+    with pytest.raises(ValueError, match="not valid JSON"):
+        load_settings(file)
+
+
