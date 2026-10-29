@@ -188,3 +188,40 @@ a:hover {
   text-align: center;
 }
 
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -80px -10% auto;
+  height: 520px;
+  z-index: -1;
+  background: radial-gradient(60% 60% at 50% 0%, rgba(255, 59, 59, 0.16), rgba(255, 59, 59, 0) 70%);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin: 0 0 20px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: var(--red-soft);
+  border: 1px solid rgba(200, 20, 30, 0.18);
+  color: var(--red);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px -8px rgba(200, 20, 30, 0.4);
+}
+
+h1 {
+  margin: 0 auto 24px;
+  max-width: 15ch;
+  font-size: clamp(40px, 7vw, 74px);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.grad {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
