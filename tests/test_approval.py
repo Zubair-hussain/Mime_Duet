@@ -23,3 +23,9 @@ def test_anything_else_declines(answer):
     )
 
 
+def test_the_draft_is_shown_before_asking():
+    shown = []
+    ask_approval("Sara", "Hi", input_fn=lambda prompt: "n", out=shown.append)
+    assert "Sara" in shown[0]
+
+
