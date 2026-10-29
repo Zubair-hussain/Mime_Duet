@@ -261,3 +261,12 @@ Releases are tagged on the `live/production` branch. See the [Tags page](https:/
 
 Check out any version with `git checkout v0.2.0`.
 
+## Common errors
+
+| Error | Fix |
+|---|---|
+| `No API key found` or `AuthenticationError` | Your API key is not set in this terminal. Repeat Step 3. |
+| `ModuleNotFoundError: anthropic` | Your virtual environment is not on. Activate `.venv` and run `pip install -r requirements.txt`. |
+| `RateLimitError` | Too many requests. Wait a moment and try again. |
+| `Config error: ...` | Check `duet.config.json` and `data/inbox.json`. The message says what is wrong. |
+
