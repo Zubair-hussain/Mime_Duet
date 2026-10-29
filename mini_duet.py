@@ -44,3 +44,9 @@ tools = [
 ]
 
 
+def ask_approval(to, text):
+    """Human in the loop: nothing is sent until you type y."""
+    print(f"\nMini Duet wants to send to {to}:\n  {text}")
+    return input("Approve? (y/n) ").strip().lower() == "y"
+
+
