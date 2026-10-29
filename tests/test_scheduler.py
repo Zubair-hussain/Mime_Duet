@@ -18,3 +18,10 @@ def test_sleeps_between_runs_but_not_after_the_last_one():
     assert sleeps == [7, 7]
 
 
+def test_zero_runs_does_nothing():
+    def fail():
+        raise AssertionError("should not run")
+
+    assert run_forever(fail, 1, sleep=lambda seconds: None, max_runs=0) == 0
+
+
