@@ -25,3 +25,10 @@ def test_reads_messages_from_a_file(tmp_path):
     assert load_inbox(file) == messages
 
 
+def test_invalid_json_raises(tmp_path):
+    file = tmp_path / "inbox.json"
+    file.write_text("oops")
+    with pytest.raises(ValueError, match="not valid JSON"):
+        load_inbox(file)
+
+
