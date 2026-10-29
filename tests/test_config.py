@@ -21,3 +21,8 @@ def test_missing_default_file_gives_defaults(tmp_path, monkeypatch):
     assert load_settings() == Settings()
 
 
+def test_missing_explicit_file_raises(tmp_path):
+    with pytest.raises(FileNotFoundError):
+        load_settings(tmp_path / "nope.json")
+
+
