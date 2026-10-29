@@ -32,3 +32,8 @@ def test_invalid_json_raises(tmp_path):
         load_inbox(file)
 
 
+def test_rejects_a_non_list():
+    with pytest.raises(ValueError, match="JSON list"):
+        validate_inbox({"a": 1})
+
+
