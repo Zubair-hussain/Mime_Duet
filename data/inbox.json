@@ -1,0 +1,12 @@
+[
+  {
+    "from": "Sara (client)",
+    "subject": "Invoice #42?",
+    "body": "Hi! Did you send invoice #42?"
+  },
+  {
+    "from": "Calendar",
+    "subject": "Dentist at 4:30 PM today",
+    "body": ""
+  }
+]
