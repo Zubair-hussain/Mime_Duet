@@ -85,3 +85,7 @@ def test_the_page_is_mobile_friendly(page):
     assert "width=device-width" in page.meta["viewport"]
 
 
+def test_there_is_exactly_one_h1(page):
+    assert page.h1_count == 1
+
+
