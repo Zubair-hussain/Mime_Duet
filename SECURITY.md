@@ -14,3 +14,6 @@ Mini Duet reads your Anthropic API key from the `ANTHROPIC_API_KEY` environment 
 - If you ever commit a key by mistake, **revoke it in the Anthropic Console right away** and create a new one. Deleting the commit is not enough.
 - Keep `.env` files out of Git. The included `.gitignore` already does this.
 
+## What the tool can do
+
+Mini Duet can only read the inbox file you give it and send a message through the code you plug in. Anything that sends waits for you to type `y`. Keep that approval step in place if you extend the project.
