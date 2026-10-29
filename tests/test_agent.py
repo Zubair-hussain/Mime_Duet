@@ -112,3 +112,12 @@ def test_every_request_carries_the_tools_and_the_fallback(settings, inbox):
         assert call["fallbacks"] == "default"
 
 
+def test_the_default_approval_is_the_interactive_one(settings, inbox, monkeypatch, capsys):
+    monkeypatch.setattr("builtins.input", lambda prompt: "n")
+    client = FakeClient(
+        response("tool_use", tool_use_block("t1", "send_message", {"to": "Sara", "text": "Hi"})),
+        response("end_turn", text_block("Done.")),
+    )
+    check_in(client, settings, inbox)
+    assert client.calls[1]["messages"][-1]["content"][0]["content"] == DECLINED
+    assert "Mini Duet wants to send to Sara" in capsys.readouterr().out
