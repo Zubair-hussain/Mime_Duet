@@ -16,3 +16,8 @@ def test_defaults_match_the_video():
     assert settings.system == DEFAULT_SYSTEM
 
 
+def test_missing_default_file_gives_defaults(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    assert load_settings() == Settings()
+
+
