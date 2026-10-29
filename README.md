@@ -101,3 +101,27 @@ export ANTHROPIC_API_KEY="your-key-here"
 
 This lasts for the current terminal only. Set it again if you open a new one.
 
+## Step 4: Run it
+
+```bash
+python -m duet --once
+```
+
+Mini Duet reads the inbox, drafts a reply, and asks:
+
+```
+Mini Duet wants to send to Sara (client):
+  Hi Sara! Yes, invoice #42 went out this morning.
+Approve? (y/n)
+```
+
+Type `y` to send it or `n` to decline. Then it prints your brief.
+
+Leave off `--once` and it checks in again every 3 hours. Press **Ctrl + C** to stop it.
+
+The single-file version from the video still works exactly as shown:
+
+```bash
+python mini_duet.py
+```
+
