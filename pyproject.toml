@@ -1,0 +1,7 @@
+# Tool settings only. Mini Duet is a script, not an installable package.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
+
