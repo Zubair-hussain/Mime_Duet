@@ -37,3 +37,8 @@ def test_rejects_a_non_list():
         validate_inbox({"a": 1})
 
 
+def test_rejects_messages_that_are_not_objects():
+    with pytest.raises(ValueError, match="must be an object"):
+        validate_inbox(["hello"])
+
+
