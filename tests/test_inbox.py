@@ -47,3 +47,8 @@ def test_rejects_messages_with_missing_keys():
         validate_inbox([{"from": "A"}])
 
 
+def test_valid_inbox_is_returned_unchanged():
+    items = [{"from": "A", "subject": "B", "body": "C"}]
+    assert validate_inbox(items) is items
+
+
