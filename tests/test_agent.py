@@ -85,3 +85,12 @@ def test_a_check_in_runs_the_whole_tool_loop(settings, inbox):
     assert final_messages[-1]["content"][0]["content"] == "Sent."
 
 
+def test_a_declined_message_is_reported_back_to_the_model(settings, inbox):
+    client = FakeClient(
+        response("tool_use", tool_use_block("t1", "send_message", {"to": "Sara", "text": "Hi"})),
+        response("end_turn", text_block("Okay, not sent.")),
+    )
+    check_in(client, settings, inbox, always(False), lambda text: None)
+    assert client.calls[1]["messages"][-1]["content"][0]["content"] == DECLINED
+
+
