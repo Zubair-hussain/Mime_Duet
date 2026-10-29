@@ -125,3 +125,14 @@ The single-file version from the video still works exactly as shown:
 python mini_duet.py
 ```
 
+## Command line options
+
+| Option | What it does |
+|---|---|
+| `--once` | Run one check-in and exit |
+| `--config PATH` | Use a different settings file (default: `duet.config.json`) |
+| `--inbox PATH` | Use a different inbox file (overrides the settings) |
+| `--version` | Print the version |
+
+Exit codes: `0` ok, `1` API key problem, `2` bad config or inbox file.
+
