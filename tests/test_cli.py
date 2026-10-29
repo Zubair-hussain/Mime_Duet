@@ -69,3 +69,10 @@ def test_the_inbox_path_comes_from_the_config_by_default(tmp_path):
     assert "Sentinel" in client.calls[1]["messages"][-1]["content"][0]["content"]
 
 
+def test_a_broken_config_exits_with_code_2(tmp_path, capsys):
+    config = tmp_path / "bad.json"
+    config.write_text("{nope")
+    assert main(["--once", "--config", str(config)], client_factory=quiet_client) == 2
+    assert "Config error" in capsys.readouterr().out
+
+
