@@ -1,0 +1,7 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "max_tokens": 16000,
+  "check_every_seconds": 10800,
+  "inbox_path": "data/inbox.json"
+}
