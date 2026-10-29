@@ -111,3 +111,27 @@ a:hover {
   font-weight: 500;
 }
 
+.nav nav a:hover {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 36px;
+  width: auto;
+  filter: drop-shadow(0 4px 8px rgba(200, 20, 30, 0.25));
+}
+
