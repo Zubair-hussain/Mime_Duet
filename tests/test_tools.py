@@ -17,3 +17,9 @@ def test_every_tool_is_strict_with_a_closed_schema():
         assert tool["input_schema"]["additionalProperties"] is False
 
 
+def test_send_message_requires_to_and_text():
+    schema = TOOLS[1]["input_schema"]
+    assert schema["required"] == ["to", "text"]
+    assert set(schema["properties"]) == {"to", "text"}
+
+
