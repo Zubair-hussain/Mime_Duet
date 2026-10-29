@@ -49,3 +49,10 @@ def test_non_object_json_raises(tmp_path):
         load_settings(file)
 
 
+def test_unknown_setting_raises(tmp_path):
+    file = tmp_path / "config.json"
+    file.write_text(json.dumps({"colour": "blue"}))
+    with pytest.raises(ValueError, match="Unknown setting"):
+        load_settings(file)
+
+
