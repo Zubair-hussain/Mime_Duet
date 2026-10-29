@@ -84,3 +84,9 @@ def test_a_missing_config_file_exits_with_code_2(tmp_path, capsys):
     assert "not found" in capsys.readouterr().out
 
 
+def test_a_broken_inbox_exits_with_code_2(tmp_path, capsys):
+    inbox = write_json(tmp_path / "inbox.json", {"not": "a list"})
+    assert main(["--once", "--inbox", str(inbox)], client_factory=quiet_client) == 2
+    assert "Config error" in capsys.readouterr().out
+
+
