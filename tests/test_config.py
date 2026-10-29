@@ -42,3 +42,10 @@ def test_invalid_json_raises(tmp_path):
         load_settings(file)
 
 
+def test_non_object_json_raises(tmp_path):
+    file = tmp_path / "config.json"
+    file.write_text("[1, 2]")
+    with pytest.raises(ValueError, match="JSON object"):
+        load_settings(file)
+
+
