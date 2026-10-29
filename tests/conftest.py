@@ -16,3 +16,7 @@ def settings():
     return Settings()
 
 
+@pytest.fixture
+def inbox():
+    """A one-message inbox."""
+    return [{"from": "Sara", "subject": "Invoice #42?", "body": "Did you send it?"}]
