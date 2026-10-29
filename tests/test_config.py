@@ -87,3 +87,8 @@ def test_valid_settings_pass_through_unchanged():
     assert validate(settings) is settings
 
 
+def test_the_bundled_config_file_is_valid():
+    from pathlib import Path
+
+    bundled = Path(__file__).resolve().parent.parent / "duet.config.json"
+    assert load_settings(bundled) == Settings()
