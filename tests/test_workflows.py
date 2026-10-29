@@ -50,3 +50,7 @@ def test_deploy_publishes_the_docs_folder():
     assert upload["with"]["path"] == "docs"
 
 
+def test_deploy_can_be_started_by_hand():
+    assert "workflow_dispatch" in load("deploy.yml")["on"]
+
+
