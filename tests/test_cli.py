@@ -136,3 +136,10 @@ def test_without_once_it_checks_in_on_a_schedule(tmp_path):
     assert sleeps == [1, 1]
 
 
+def test_version_flag(capsys):
+    with pytest.raises(SystemExit) as exit_info:
+        main(["--version"])
+    assert exit_info.value.code == 0
+    assert __version__ in capsys.readouterr().out
+
+
